@@ -1,8 +1,10 @@
 <template>
   <div class="menu">
-    <a href="">Home</a>
-    <a href="">Products</a>
-    <a href="">About</a>
+    <!-- <a v-for="작명 in 3" :key="작명">Home</a> -->
+    <!-- 반복문 쓸 때 key(유니크한 문자나 숫자)를 꼭 써야함 -->
+    <!-- <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a> -->
+    <!-- a는 요소 i는 인덱스 -->
+    <a v-for="(a, i) in 메뉴들" :key="i">{{ i }}</a>
   </div>
 
   <img alt="Vue logo" src="./assets/logo.png" />
@@ -27,6 +29,7 @@ export default {
       price1: 60,
       price2: 70,
       스타일: "color: blue",
+      메뉴들: ["Home", "Shop", "About"],
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
     };
   },
