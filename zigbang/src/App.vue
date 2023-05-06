@@ -1,4 +1,10 @@
 <template>
+  <div class="menu">
+    <a href="">Home</a>
+    <a href="">Products</a>
+    <a href="">About</a>
+  </div>
+
   <img alt="Vue logo" src="./assets/logo.png" />
   <div>
     <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
@@ -21,7 +27,7 @@ export default {
       price1: 60,
       price2: 70,
       스타일: "color: blue",
-      products: ['역삼동원룸', '천호동원룸', '마포구원룸'],
+      products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
     };
   },
   components: {},
@@ -36,5 +42,15 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+.menu {
+  background: darkslateblue;
+  padding: 15px;
+  border-radius: 5px;
+}
+.menu a {
+  color: white;
+  padding: 10px;
 }
 </style>
