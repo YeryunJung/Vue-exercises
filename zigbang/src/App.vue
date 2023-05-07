@@ -20,7 +20,7 @@
   </div>
 
   <!-- 할인 배너 -->
-  <Discount />
+  <Discount v-bind="오브젝트" />
 
   <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
   <!-- <div>
@@ -46,7 +46,8 @@
     <button @click="increase">허위매물신고</button>
     <span>신고수 : {{ 신고수[2] }}</span>
   </div> -->
-  <div v-for="(작명, idx) in 원룸들" :key="idx">
+
+  <!-- <div v-for="(작명, idx) in 원룸들" :key="idx">
     <img :src="원룸들[idx].image" alt="" class="room-img" />
     <h4
       @click="
@@ -57,19 +58,23 @@
       {{ 원룸들[idx].title }}
     </h4>
     <p>{{ 원룸들[idx].price }} 만원</p>
-  </div>
+  </div> -->
+
+  <Card :원룸="원룸들[idx]" v-for="(원룸, idx) in 원룸들" :key="idx" />
 </template>
 
 <script>
 import data from "./assets/oneroom";
 import Discount from "./Discount.vue";
 import Modal from "./Modal.vue";
+import Card from "./Card.vue";
 
 export default {
   name: "App",
   data() {
     // 데이터 보관함
     return {
+      오브젝트: { name: "kim", age: 20 },
       누른상품번호: 0,
       원룸들: data,
       모달창열렸어: false,
@@ -90,6 +95,7 @@ export default {
   components: {
     Discount,
     Modal,
+    Card,
   },
 };
 </script>
