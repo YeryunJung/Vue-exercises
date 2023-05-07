@@ -1,7 +1,11 @@
 <template>
+  <!-- v-if 문법 추가 -->
+  <div v-if="1 == 1">안녕하세요</div>
+  <div v-else-if="1 == 3">안녕하세요2</div>
+
   <div class="black-bg" v-if="모달창열렸어">
     <div class="white-bg">
-      <h4>상세페이지임</h4>
+      <h4>{{ 원룸들[누른상품번호].title }}</h4>
       <p>상세페이지 내용임</p>
       <button @click="모달창열렸어 = false">닫기</button>
     </div>
@@ -16,12 +20,12 @@
   </div>
 
   <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
-  <div>
+  <!-- <div>
     <img :src="원룸들[0].image" alt="" class="room-img" />
-    <!-- <h4 @click="모달창열렸어 = true">{{ products[0] }}</h4> -->
+    <h4 @click="모달창열렸어 = true">{{ products[0] }}</h4>
     <h4>{{ 원룸들[0].title }}</h4>
     <p>{{ 원룸들[0].price }} 만원</p>
-    <!-- <button @click="신고수++">허위매물신고</button> -->
+    <button @click="신고수++">허위매물신고</button>
     <button @click="increase">허위매물신고</button>
     <span>신고수 : {{ 신고수[0] }}</span>
   </div>
@@ -38,11 +42,19 @@
     <p>50 만원</p>
     <button @click="increase">허위매물신고</button>
     <span>신고수 : {{ 신고수[2] }}</span>
-  </div>
-  <!-- <div v-for="(작명, idx) in products" :key="idx">
-    <h4>{{ products[idx] }}</h4>
-    <p>50 만원</p>
   </div> -->
+  <div v-for="(작명, idx) in 원룸들" :key="idx">
+    <img :src="원룸들[idx].image" alt="" class="room-img" />
+    <h4
+      @click="
+        모달창열렸어 = true;
+        누른상품번호 = idx;
+      "
+    >
+      {{ 원룸들[idx].title }}
+    </h4>
+    <p>{{ 원룸들[idx].price }} 만원</p>
+  </div>
 </template>
 
 <script>
@@ -53,6 +65,7 @@ export default {
   data() {
     // 데이터 보관함
     return {
+      누른상품번호: 0,
       원룸들: data,
       모달창열렸어: false,
       price1: 60,
