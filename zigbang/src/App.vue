@@ -9,18 +9,26 @@
 
   <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
   <div>
+    <img src="./assets/room0.jpg" alt="" class="room-img" />
     <h4>{{ products[0] }}</h4>
     <p>50 만원</p>
-    <button @click="신고수++">허위매물신고</button>
-    <span>신고수 : {{ 신고수 }}</span>
+    <!-- <button @click="신고수++">허위매물신고</button> -->
+    <button @click="increase">허위매물신고</button>
+    <span>신고수 : {{ 신고수[0] }}</span>
   </div>
   <div>
+    <img src="./assets/room1.jpg" alt="" class="room-img" />
     <h4>{{ products[1] }}</h4>
     <p>50 만원</p>
+    <button @click="increase">허위매물신고</button>
+    <span>신고수 : {{ 신고수[1] }}</span>
   </div>
   <div>
+    <img src="./assets/room2.jpg" alt="" class="room-img" />
     <h4>{{ products[2] }}</h4>
     <p>50 만원</p>
+    <button @click="increase">허위매물신고</button>
+    <span>신고수 : {{ 신고수[2] }}</span>
   </div>
   <!-- <div v-for="(작명, idx) in products" :key="idx">
     <h4>{{ products[idx] }}</h4>
@@ -39,8 +47,14 @@ export default {
       스타일: "color: blue",
       메뉴들: ["Home", "Shop", "About"],
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
-      신고수: 0,
+      신고수: [0, 0, 0],
     };
+  },
+  // 함수
+  methods: {
+    increase() {
+      this.신고수 += 1;
+    },
   },
   components: {},
 };
@@ -63,5 +77,10 @@ export default {
 .menu a {
   color: white;
   padding: 10px;
+}
+
+.room-img {
+  width: 100%;
+  margin-top: 40px;
 }
 </style>
