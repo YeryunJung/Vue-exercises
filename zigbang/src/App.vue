@@ -4,20 +4,28 @@
     <!-- 반복문 쓸 때 key(유니크한 문자나 숫자)를 꼭 써야함 -->
     <!-- <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a> -->
     <!-- a는 요소 i는 인덱스 -->
-    <a v-for="(a, i) in 메뉴들" :key="i">{{ i }}</a>
+    <a v-for="(a, i) in 메뉴들" :key="i">{{ a }}</a>
   </div>
 
-  <img alt="Vue logo" src="./assets/logo.png" />
+  <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
   <div>
-    <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
-    원룸샵
-    <h4 class="red" :style="스타일">XX 원룸</h4>
-    <p>{{ price1 }} 만원</p>
+    <h4>{{ products[0] }}</h4>
+    <p>50 만원</p>
+    <button @click="신고수++">허위매물신고</button>
+    <span>신고수 : {{ 신고수 }}</span>
   </div>
   <div>
-    <h4>XX 원룸</h4>
-    <p>{{ price2 }} 만원</p>
+    <h4>{{ products[1] }}</h4>
+    <p>50 만원</p>
   </div>
+  <div>
+    <h4>{{ products[2] }}</h4>
+    <p>50 만원</p>
+  </div>
+  <!-- <div v-for="(작명, idx) in products" :key="idx">
+    <h4>{{ products[idx] }}</h4>
+    <p>50 만원</p>
+  </div> -->
 </template>
 
 <script>
@@ -31,6 +39,7 @@ export default {
       스타일: "color: blue",
       메뉴들: ["Home", "Shop", "About"],
       products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
+      신고수: 0,
     };
   },
   components: {},
@@ -44,7 +53,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
 .menu {
