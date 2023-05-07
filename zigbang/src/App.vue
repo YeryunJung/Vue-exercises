@@ -4,11 +4,15 @@
   <div v-else-if="1 == 3">안녕하세요2</div>
 
   <!-- 모달창 -->
-  <Modal
-    :원룸들="원룸들"
-    :누른상품번호="누른상품번호"
-    :모달창열렸어="모달창열렸어"
-  />
+  <!-- <div class="start" :class="{ end: 모달창열렸어 }"> -->
+  <transition name="fade">
+    <Modal
+      @closeModeal="모달창열렸어 = false"
+      :원룸들="원룸들"
+      :누른상품번호="누른상품번호"
+      :모달창열렸어="모달창열렸어"
+    />
+  </transition>
 
   <!-- 메뉴바 -->
   <div class="menu">
@@ -21,6 +25,10 @@
 
   <!-- 할인 배너 -->
   <Discount v-bind="오브젝트" />
+
+  <!-- 정렬 버튼 -->
+  <button @click="priceSort">가격순정렬</button>
+  <button @click="sortBack">되돌리기</button>
 
   <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
   <!-- <div>
@@ -85,6 +93,7 @@ export default {
       오브젝트: { name: "kim", age: 20 },
       누른상품번호: 0,
       원룸들: data,
+      원룸들오리지널: [...data],
       모달창열렸어: false,
       price1: 60,
       price2: 70,
@@ -98,6 +107,14 @@ export default {
   methods: {
     increase() {
       this.신고수 += 1;
+    },
+    priceSort() {
+      this.원룸들.sort(function (a, b) {
+        return a.price - b.price;
+      });
+    },
+    sortBack() {
+      this.원룸들 = [...this.원룸들오리지널];
     },
   },
   components: {
@@ -156,5 +173,23 @@ div {
 .room-img {
   width: 100%;
   margin-top: 40px;
+}
+
+.start {
+  opacity: 0;
+  transition: all 1s;
+}
+.end {
+  opacity: 1;
+}
+
+.fade-enter-from {
+  opacity: 0;
+}
+.fade-enter-active {
+  transition: all 1s;
+}
+.fade-enter-to {
+  opacity: 1;
 }
 </style>
