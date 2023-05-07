@@ -17,9 +17,10 @@
 
   <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
   <div>
-    <img src="./assets/room0.jpg" alt="" class="room-img" />
-    <h4 @click="모달창열렸어 = true">{{ products[0] }}</h4>
-    <p>50 만원</p>
+    <img :src="원룸들[0].image" alt="" class="room-img" />
+    <!-- <h4 @click="모달창열렸어 = true">{{ products[0] }}</h4> -->
+    <h4>{{ 원룸들[0].title }}</h4>
+    <p>{{ 원룸들[0].price }} 만원</p>
     <!-- <button @click="신고수++">허위매물신고</button> -->
     <button @click="increase">허위매물신고</button>
     <span>신고수 : {{ 신고수[0] }}</span>
@@ -45,11 +46,14 @@
 </template>
 
 <script>
+import data from "./assets/oneroom";
+
 export default {
   name: "App",
   data() {
     // 데이터 보관함
     return {
+      원룸들: data,
       모달창열렸어: false,
       price1: 60,
       price2: 70,
