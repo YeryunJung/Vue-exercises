@@ -3,14 +3,14 @@
   <div v-if="1 == 1">안녕하세요</div>
   <div v-else-if="1 == 3">안녕하세요2</div>
 
-  <div class="black-bg" v-if="모달창열렸어">
-    <div class="white-bg">
-      <h4>{{ 원룸들[누른상품번호].title }}</h4>
-      <p>상세페이지 내용임</p>
-      <button @click="모달창열렸어 = false">닫기</button>
-    </div>
-  </div>
+  <!-- 모달창 -->
+  <Modal
+    :원룸들="원룸들"
+    :누른상품번호="누른상품번호"
+    :모달창열렸어="모달창열렸어"
+  />
 
+  <!-- 메뉴바 -->
   <div class="menu">
     <!-- <a v-for="작명 in 3" :key="작명">Home</a> -->
     <!-- 반복문 쓸 때 key(유니크한 문자나 숫자)를 꼭 써야함 -->
@@ -18,6 +18,9 @@
     <!-- a는 요소 i는 인덱스 -->
     <a v-for="(a, i) in 메뉴들" :key="i">{{ a }}</a>
   </div>
+
+  <!-- 할인 배너 -->
+  <Discount />
 
   <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
   <!-- <div>
@@ -59,6 +62,8 @@
 
 <script>
 import data from "./assets/oneroom";
+import Discount from "./Discount.vue";
+import Modal from "./Modal.vue";
 
 export default {
   name: "App",
@@ -82,7 +87,10 @@ export default {
       this.신고수 += 1;
     },
   },
-  components: {},
+  components: {
+    Discount,
+    Modal,
+  },
 };
 </script>
 
@@ -92,6 +100,12 @@ body {
 }
 div {
   box-sizing: border-box;
+}
+.discount {
+  background: #eee;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
 }
 .black-bg {
   width: 100%;
