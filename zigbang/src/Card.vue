@@ -1,9 +1,7 @@
 <template>
   <div>
     <img :src="원룸.image" alt="" class="room-img" />
-    <h4>
-      {{ 원룸.title }}
-    </h4>
+    <h4 @click="$emit('openModal', 원룸.id)">{{ 원룸.title }}</h4>
     <p>{{ 원룸.price }} 만원</p>
   </div>
 </template>

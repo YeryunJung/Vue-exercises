@@ -60,7 +60,15 @@
     <p>{{ 원룸들[idx].price }} 만원</p>
   </div> -->
 
-  <Card :원룸="원룸들[idx]" v-for="(원룸, idx) in 원룸들" :key="idx" />
+  <Card
+    @openModal="
+      모달창열렸어 = true;
+      누른상품번호 = $event;
+    "
+    :원룸="원룸들[idx]"
+    v-for="(원룸, idx) in 원룸들"
+    :key="idx"
+  />
 </template>
 
 <script>
