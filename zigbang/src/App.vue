@@ -1,4 +1,12 @@
 <template>
+  <div class="black-bg" v-if="모달창열렸어">
+    <div class="white-bg">
+      <h4>상세페이지임</h4>
+      <p>상세페이지 내용임</p>
+      <button @click="모달창열렸어 = false">닫기</button>
+    </div>
+  </div>
+
   <div class="menu">
     <!-- <a v-for="작명 in 3" :key="작명">Home</a> -->
     <!-- 반복문 쓸 때 key(유니크한 문자나 숫자)를 꼭 써야함 -->
@@ -10,7 +18,7 @@
   <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
   <div>
     <img src="./assets/room0.jpg" alt="" class="room-img" />
-    <h4>{{ products[0] }}</h4>
+    <h4 @click="모달창열렸어 = true">{{ products[0] }}</h4>
     <p>50 만원</p>
     <!-- <button @click="신고수++">허위매물신고</button> -->
     <button @click="increase">허위매물신고</button>
@@ -42,6 +50,7 @@ export default {
   data() {
     // 데이터 보관함
     return {
+      모달창열렸어: false,
       price1: 60,
       price2: 70,
       스타일: "color: blue",
@@ -61,6 +70,26 @@ export default {
 </script>
 
 <style>
+body {
+  margin: 0;
+}
+div {
+  box-sizing: border-box;
+}
+.black-bg {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  padding: 20px;
+}
+.white-bg {
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  padding: 20px;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
