@@ -1,82 +1,84 @@
 <template>
-  <!-- v-if 문법 추가 -->
-  <div v-if="1 == 1">안녕하세요</div>
-  <div v-else-if="1 == 3">안녕하세요2</div>
-
-  <!-- 모달창 -->
-  <!-- <div class="start" :class="{ end: 모달창열렸어 }"> -->
-  <transition name="fade">
-    <Modal
-      @closeModeal="모달창열렸어 = false"
-      :원룸들="원룸들"
-      :누른상품번호="누른상품번호"
-      :모달창열렸어="모달창열렸어"
-    />
-  </transition>
-
-  <!-- 메뉴바 -->
-  <div class="menu">
-    <!-- <a v-for="작명 in 3" :key="작명">Home</a> -->
-    <!-- 반복문 쓸 때 key(유니크한 문자나 숫자)를 꼭 써야함 -->
-    <!-- <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a> -->
-    <!-- a는 요소 i는 인덱스 -->
-    <a v-for="(a, i) in 메뉴들" :key="i">{{ a }}</a>
-  </div>
-
-  <!-- 할인 배너 -->
-  <Discount v-bind="오브젝트" />
-
-  <!-- 정렬 버튼 -->
-  <button @click="priceSort">가격순정렬</button>
-  <button @click="sortBack">되돌리기</button>
-
-  <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
-  <!-- <div>
-    <img :src="원룸들[0].image" alt="" class="room-img" />
-    <h4 @click="모달창열렸어 = true">{{ products[0] }}</h4>
-    <h4>{{ 원룸들[0].title }}</h4>
-    <p>{{ 원룸들[0].price }} 만원</p>
-    <button @click="신고수++">허위매물신고</button>
-    <button @click="increase">허위매물신고</button>
-    <span>신고수 : {{ 신고수[0] }}</span>
-  </div>
   <div>
-    <img src="./assets/room1.jpg" alt="" class="room-img" />
-    <h4>{{ products[1] }}</h4>
-    <p>50 만원</p>
-    <button @click="increase">허위매물신고</button>
-    <span>신고수 : {{ 신고수[1] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room2.jpg" alt="" class="room-img" />
-    <h4>{{ products[2] }}</h4>
-    <p>50 만원</p>
-    <button @click="increase">허위매물신고</button>
-    <span>신고수 : {{ 신고수[2] }}</span>
-  </div> -->
+    <!-- v-if 문법 추가 -->
+    <div v-if="1 == 1">안녕하세요</div>
+    <div v-else-if="1 == 3">안녕하세요2</div>
 
-  <!-- <div v-for="(작명, idx) in 원룸들" :key="idx">
-    <img :src="원룸들[idx].image" alt="" class="room-img" />
-    <h4
-      @click="
+    <!-- 모달창 -->
+    <!-- <div class="start" :class="{ end: 모달창열렸어 }"> -->
+    <transition name="fade">
+      <Modal
+        @closeModeal="모달창열렸어 = false"
+        :원룸들="원룸들"
+        :누른상품번호="누른상품번호"
+        :모달창열렸어="모달창열렸어"
+      />
+    </transition>
+
+    <!-- 메뉴바 -->
+    <div class="menu">
+      <!-- <a v-for="작명 in 3" :key="작명">Home</a> -->
+      <!-- 반복문 쓸 때 key(유니크한 문자나 숫자)를 꼭 써야함 -->
+      <!-- <a v-for="작명 in 메뉴들" :key="작명">{{ 작명 }}</a> -->
+      <!-- a는 요소 i는 인덱스 -->
+      <a v-for="(a, i) in 메뉴들" :key="i">{{ a }}</a>
+    </div>
+
+    <!-- 할인 배너 -->
+    <Discount v-bind="오브젝트" />
+
+    <!-- 정렬 버튼 -->
+    <button @click="priceSort">가격순정렬</button>
+    <button @click="sortBack">되돌리기</button>
+
+    <!-- 바뀔 일이 많이 없으면 하드코딩도 가능(로고 등) -->
+    <!-- <div>
+      <img :src="원룸들[0].image" alt="" class="room-img" />
+      <h4 @click="모달창열렸어 = true">{{ products[0] }}</h4>
+      <h4>{{ 원룸들[0].title }}</h4>
+      <p>{{ 원룸들[0].price }} 만원</p>
+      <button @click="신고수++">허위매물신고</button>
+      <button @click="increase">허위매물신고</button>
+      <span>신고수 : {{ 신고수[0] }}</span>
+    </div>
+    <div>
+      <img src="./assets/room1.jpg" alt="" class="room-img" />
+      <h4>{{ products[1] }}</h4>
+      <p>50 만원</p>
+      <button @click="increase">허위매물신고</button>
+      <span>신고수 : {{ 신고수[1] }}</span>
+    </div>
+    <div>
+      <img src="./assets/room2.jpg" alt="" class="room-img" />
+      <h4>{{ products[2] }}</h4>
+      <p>50 만원</p>
+      <button @click="increase">허위매물신고</button>
+      <span>신고수 : {{ 신고수[2] }}</span>
+    </div> -->
+
+    <!-- <div v-for="(작명, idx) in 원룸들" :key="idx">
+      <img :src="원룸들[idx].image" alt="" class="room-img" />
+      <h4
+        @click="
+          모달창열렸어 = true;
+          누른상품번호 = idx;
+        "
+      >
+        {{ 원룸들[idx].title }}
+      </h4>
+      <p>{{ 원룸들[idx].price }} 만원</p>
+    </div> -->
+
+    <Card
+      @openModal="
         모달창열렸어 = true;
-        누른상품번호 = idx;
+        누른상품번호 = $event;
       "
-    >
-      {{ 원룸들[idx].title }}
-    </h4>
-    <p>{{ 원룸들[idx].price }} 만원</p>
-  </div> -->
-
-  <Card
-    @openModal="
-      모달창열렸어 = true;
-      누른상품번호 = $event;
-    "
-    :원룸="원룸들[idx]"
-    v-for="(원룸, idx) in 원룸들"
-    :key="idx"
-  />
+      :원룸="원룸들[idx]"
+      v-for="(원룸, idx) in 원룸들"
+      :key="idx"
+    />
+  </div>
 </template>
 
 <script>
