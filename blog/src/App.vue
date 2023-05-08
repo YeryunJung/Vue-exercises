@@ -5,13 +5,15 @@
       <p>Vue로 만들었음</p>
     </div>
     <!-- <button type="button" class="btn btn-primary">Primary</button> -->
-    <List :블로그글="블로그글" />
+
+    <router-view :블로그글="블로그글"></router-view>
+    <!-- <List :블로그글="블로그글" /> -->
   </div>
   
 </template>
 
 <script>
-import List from './components/List.vue'
+// import List from './components/List.vue'
 import blogData from '@/assets/blog.js'
 
 
@@ -23,7 +25,7 @@ export default {
     }
   },
   components: {
-    List,
+    // List,
   }
 }
 </script>
