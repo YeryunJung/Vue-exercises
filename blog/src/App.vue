@@ -6,7 +6,13 @@
     </div> -->
     <!-- <button type="button" class="btn btn-primary">Primary</button> -->
 
-    <router-view :블로그글="블로그글"></router-view>
+    <!-- a 태그와 비슷한 것 -->
+    <router-link to="/">홈 페이지</router-link>
+    <router-link to="/list">리스트 페이지</router-link>
+    
+    <div class="mt-5">
+      <router-view :블로그글="블로그글"></router-view>
+    </div>
     <!-- <List :블로그글="블로그글" /> -->
   </div>
   
@@ -23,7 +29,7 @@ export default {
     return {
       블로그글: blogData,
     }
-  },
+  } ,
   components: {
     // List,
   }
